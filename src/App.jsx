@@ -101,8 +101,8 @@ const App = () => {
         <RecursiveNav routes={routes.routes} />
       </nav>
 
-      <main className="flex-1">
-        <h1 className="text-3xl font-bold mb-4 border-b p-4">
+      <main className="flex-1 flex items-center flex-col">
+        <h1 className="w-full mb-10 text-3xl font-bold border-b p-4 self-start">
           Welcome to UI Practice
         </h1>
         {/* Outlet renders the nested route components */}
