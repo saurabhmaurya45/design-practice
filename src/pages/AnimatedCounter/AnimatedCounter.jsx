@@ -18,7 +18,7 @@ const AnimatedCounter = () => {
                 value={count}
                 min={0}
                 onChange={(e) => setCount(+e.target.value)}
-                className="w-20 p-1 border shadow-sm"
+                className="w-20 border-none outline-none rounded-lg p-2 py-1 shadow-sm "
                 autoFocus
               />
             </div>
@@ -36,13 +36,17 @@ export default AnimatedCounter;
 
 function Counter({ value }) {
   return (
-    <div className="flex h-6 ring-2 ring-green-500 shadow-lg overflow-y-auto">
-      {value &&
-        [...Array(Math.floor(Math.log10(value) + 1)).keys()]
-          .reverse()
-          .map((key) => {
-            return <Digit key={key} value={value} place={Math.pow(10, key)} />;
-          })}
+    <div className="flex justify-center items-center p-2 bg-white shadow-sm border rounded-lg">
+      <div className="flex h-8 overflow-y-hidden leading-8 text-xl">
+        {value &&
+          [...Array(Math.floor(Math.log10(value) + 1)).keys()]
+            .reverse()
+            .map((key) => {
+              return (
+                <Digit key={key} value={value} place={Math.pow(10, key)} />
+              );
+            })}
+      </div>
     </div>
   );
 }
