@@ -21,7 +21,7 @@ const BubbleZoomEffect = () => {
   }, []);
 
   return (
-    <CardWrapper className=" flex flex-col pb-4 gap-4 relative">
+    <CardWrapper className="w-full flex flex-col pb-4 gap-4 relative">
       <h1 className="text-4xl font-bold py-4">BubbleZoomEffect</h1>
       <div className="avatars ">
         {data.map((item) => (
