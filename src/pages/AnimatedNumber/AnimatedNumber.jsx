@@ -10,7 +10,10 @@ const AnimatedNumber = () => {
   const [number, setNumber] = useState(1000);
 
   return (
-    <CardWrapper className="w-96 h-60">
+    <CardWrapper
+      title="Animated Number"
+      className="flex w-96 h-72 flex-col pb-4 gap-12 relative"
+    >
       <div className="flex items-center justify-center gap-10">
         <Button
           Icon={FiMinus}

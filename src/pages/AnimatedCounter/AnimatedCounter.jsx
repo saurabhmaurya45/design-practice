@@ -6,7 +6,10 @@ const AnimatedCounter = () => {
   let [count, setCount] = useState(0);
 
   return (
-    <CardWrapper className="w-96 h-60">
+    <CardWrapper
+      title="Animated Counter"
+      className="flex w-96 h-72 flex-col pb-4 gap-12 relative"
+    >
       <div className="flex flex-col w-full h-full justify-evenly">
         <div className="flex justify-center">
           <div className="flex-col text-center">
