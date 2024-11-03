@@ -1,6 +1,6 @@
 import { motion, useSpring, useTransform } from "framer-motion";
 import React, { useEffect, useState } from "react";
-import CardWrapper from "../../components/CardWrapper";
+import { CardWrapper } from "../../components";
 
 const AnimatedCounter = () => {
   let [count, setCount] = useState(0);
