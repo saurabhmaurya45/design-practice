@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import CardWrapper from "../../components/CardWrapper";
+import { CardWrapper } from "../../components";
 import { IoAdd } from "react-icons/io5";
 import { FiMinus } from "react-icons/fi";
 import { motion, useSpring, useTransform } from "framer-motion";
