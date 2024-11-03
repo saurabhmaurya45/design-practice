@@ -1,3 +1,41 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.avatars {
+  --avatar-count: 10;
+  --avatar-size: 64px;
+  --column-size: calc(var(--avatar-size) / 2);
+  --transition-duration: 400ms;
+  display: grid;
+  align-self: flex-start;
+  grid-template-columns: repeat(var(--avatar-count), var(--column-size));
+  transition: var(--transition-duration);
+  transition-delay: var(--transition-duration);
+}
+
+.avatars:hover {
+  --column-size: calc(var(--avatar-size) * 1.5);
+  transition-delay: 0ms;
+}
+
+.avatar {
+  max-width: none;
+  width: var(--avatar-size);
+  border-radius: 100vw;
+  border: 5px solid white;
+  box-shadow: 0.25rem 0.25rem 0.5rem hsl(0 0% 0% / 0.2);
+  transition: scale var(--transition-duration);
+}
+
+.avatar:hover {
+  scale: 2;
+  z-index: 2;
+}
+
+@supports selector(:has(+ *)) {
+  .avatar:hover + .avatar,
+  .avatar:has(+ .avatar:hover) {
+    scale: 1.5;
+  }
+}
