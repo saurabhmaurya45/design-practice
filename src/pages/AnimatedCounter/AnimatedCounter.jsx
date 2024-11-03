@@ -7,7 +7,7 @@ const AnimatedCounter = () => {
 
   return (
     <CardWrapper className="w-96 h-60">
-      <div className="flex flex-col w-full h-full">
+      <div className="flex flex-col w-full h-full justify-evenly">
         <div className="flex justify-center">
           <div className="flex-col text-center">
             <p>Count: {count}</p>
@@ -24,7 +24,7 @@ const AnimatedCounter = () => {
             </div>
           </div>
         </div>
-        <div className="flex items-center justify-center ">
+        <div className="flex items-center justify-center p-4 ">
           <Counter value={count} />
         </div>
       </div>
