@@ -1,6 +1,6 @@
 import { createBrowserRouter } from "react-router-dom";
 import App from "../App";
-import { AnimatedCounter } from "../pages";
+import { AnimatedCounter, AnimatedNumber } from "../pages";
 
 const routes = createBrowserRouter([
     {
@@ -10,6 +10,10 @@ const routes = createBrowserRouter([
             {
                 path: 'animated-counter',
                 element: <AnimatedCounter />,
+            },
+            {
+                path: 'animated-number',
+                element: <AnimatedNumber />,
             },
         ],
     },
