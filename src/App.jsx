@@ -1,11 +1,11 @@
-import React, { useState } from 'react';
-import { NavLink, Outlet } from 'react-router-dom';
-import routes from './router/routes';
-import { FaFile } from 'react-icons/fa';
-import { RiArrowDropDownLine, RiArrowDropRightLine } from 'react-icons/ri';
-import { motion, AnimatePresence } from 'framer-motion';
+import React, { useState } from "react";
+import { NavLink, Outlet } from "react-router-dom";
+import routes from "./router/routes";
+import { FaFile } from "react-icons/fa";
+import { RiArrowDropDownLine, RiArrowDropRightLine } from "react-icons/ri";
+import { motion, AnimatePresence } from "framer-motion";
 
-const RecursiveNav = ({ routes, parentPath = '/', listClassName }) => {
+const RecursiveNav = ({ routes, parentPath = "/", listClassName }) => {
   // State to keep track of which folders are open
   const [openFolders, setOpenFolders] = useState({});
 
@@ -20,7 +20,9 @@ const RecursiveNav = ({ routes, parentPath = '/', listClassName }) => {
   return (
     <ul className="space-y-2">
       {routes.map((route, index) => {
-        const fullPath = `${parentPath}${route.path !== '/' ? `${route.path}` : ''}`;
+        const fullPath = `${parentPath}${
+          route.path !== "/" ? `${route.path}` : ""
+        }`;
         const isOpen = openFolders[fullPath];
 
         return (
@@ -30,15 +32,22 @@ const RecursiveNav = ({ routes, parentPath = '/', listClassName }) => {
               <>
                 <div
                   onClick={() => toggleFolder(fullPath)}
-                  className={`flex items-center cursor-pointer font-medium transition-colors duration-200 ease-in-out ${isOpen ? 'text-blue-700' : 'text-gray-700 hover:text-blue-600'
-                    } rounded-md p-2`}
+                  className={`flex items-center cursor-pointer font-medium transition-colors duration-200 ease-in-out ${
+                    isOpen
+                      ? "text-blue-700"
+                      : "text-gray-700 hover:text-blue-600"
+                  } rounded-md p-2`}
                 >
                   {isOpen ? (
                     <RiArrowDropDownLine className="text-gray-700 text-3xl mr-2" />
                   ) : (
                     <RiArrowDropRightLine className="text-gray-700 text-3xl mr-2" />
                   )}
-                  <span>{route.path === '/' ? 'Home' : route.path.replace('-', ' ').toUpperCase()}</span>
+                  <span>
+                    {route.path === "/"
+                      ? "Home"
+                      : route.path.replace("-", " ").toUpperCase()}
+                  </span>
                 </div>
 
                 {/* AnimatePresence and motion for smooth slide effect */}
@@ -46,12 +55,16 @@ const RecursiveNav = ({ routes, parentPath = '/', listClassName }) => {
                   {isOpen && (
                     <motion.div
                       initial={{ opacity: 0, height: 0 }}
-                      animate={{ opacity: 1, height: 'auto' }}
+                      animate={{ opacity: 1, height: "auto" }}
                       exit={{ opacity: 0, height: 0 }}
                       transition={{ duration: 0.3, ease: [0.4, 0, 0.2, 1] }} // Customize easing function for smoother animation
-                      style={{ overflow: 'hidden' }} // Ensure child elements are hidden during transition
+                      style={{ overflow: "hidden" }} // Ensure child elements are hidden during transition
                     >
-                      <RecursiveNav routes={route.children} parentPath={fullPath} listClassName="pl-6 text-sm" />
+                      <RecursiveNav
+                        routes={route.children}
+                        parentPath={fullPath}
+                        listClassName="pl-6 text-sm"
+                      />
                     </motion.div>
                   )}
                 </AnimatePresence>
@@ -61,12 +74,15 @@ const RecursiveNav = ({ routes, parentPath = '/', listClassName }) => {
                 <NavLink
                   to={fullPath}
                   className={({ isActive }) =>
-                    `flex items-center transition-colors duration-200 ease-in-out ${isActive ? 'text-blue-700 bg-blue-100' : 'text-gray-500 hover:text-blue-600 hover:bg-blue-50'
+                    `flex items-center transition-colors duration-200 ease-in-out ${
+                      isActive
+                        ? "text-blue-700 bg-blue-100"
+                        : "text-gray-500 hover:text-blue-600 hover:bg-blue-50"
                     } rounded-md p-2`
                   }
                 >
                   <FaFile className="text-gray-700 mr-2" />
-                  {route.path.replace('-', ' ').toUpperCase()}
+                  {route.path.replace("-", " ").toUpperCase()}
                 </NavLink>
               </>
             )}
@@ -77,17 +93,18 @@ const RecursiveNav = ({ routes, parentPath = '/', listClassName }) => {
   );
 };
 
-
 const App = () => {
   return (
-    <div className="flex">
-      <nav className="w-64 bg-gray-50 shadow-md rounded-lg p-4 h-screen">
+    <div className="flex ">
+      <nav className="w-64 bg-gray-50 border-r p-4 h-screen">
         <h2 className="text-xl font-semibold mb-4">Navigate</h2>
         <RecursiveNav routes={routes.routes} />
       </nav>
 
       <main className="flex-1">
-        <h1 className="text-3xl font-bold mb-4 border-b p-4">Welcome to UI Practice</h1>
+        <h1 className="text-3xl font-bold mb-4 border-b p-4">
+          Welcome to UI Practice
+        </h1>
         {/* Outlet renders the nested route components */}
         <Outlet />
       </main>

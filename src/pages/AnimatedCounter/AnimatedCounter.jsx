@@ -1,31 +1,34 @@
 import { motion, useSpring, useTransform } from "framer-motion";
 import React, { useEffect, useState } from "react";
+import CardWrapper from "../../components/CardWrapper";
 
 const AnimatedCounter = () => {
   let [count, setCount] = useState(0);
 
   return (
-    <div className="flex flex-col h-[calc(100%-85px)] gap-52">
-      <div className="flex justify-center">
-        <div className="flex-col text-center">
-          <p>Count: {count}</p>
-          <div className="mt-4 gap-8 flex justify-center items-center ">
-            <label>Choose a number:</label>
-            <input
-              type="number"
-              value={count}
-              min={0}
-              onChange={(e) => setCount(+e.target.value)}
-              className="w-20 p-1 border shadow-sm"
-              autoFocus
-            />
+    <CardWrapper className="w-96 h-60">
+      <div className="flex flex-col w-full h-full">
+        <div className="flex justify-center">
+          <div className="flex-col text-center">
+            <p>Count: {count}</p>
+            <div className="mt-4 gap-8 flex justify-center items-center ">
+              <label>Insert a number:</label>
+              <input
+                type="number"
+                value={count}
+                min={0}
+                onChange={(e) => setCount(+e.target.value)}
+                className="w-20 p-1 border shadow-sm"
+                autoFocus
+              />
+            </div>
           </div>
         </div>
+        <div className="flex items-center justify-center ">
+          <Counter value={count} />
+        </div>
       </div>
-      <div className="flex items-center justify-center ">
-        <Counter value={count} />
-      </div>
-    </div>
+    </CardWrapper>
   );
 };
 
